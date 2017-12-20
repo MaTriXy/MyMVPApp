@@ -1,11 +1,13 @@
 package com.hfrsoussama.mymvpapp.auth;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.hfrsoussama.mymvpapp.MyMvpApp;
 import com.hfrsoussama.mymvpapp.main.MainActivity;
 import com.hfrsoussama.mymvpapp.R;
 import com.hfrsoussama.mymvpapp.databinding.ActivityLoginBinding;

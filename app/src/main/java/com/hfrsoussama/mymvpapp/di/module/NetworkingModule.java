@@ -1,4 +1,4 @@
-package com.hfrsoussama.mymvpapp.di;
+package com.hfrsoussama.mymvpapp.di.module;
 
 import android.app.Application;
 import android.content.SharedPreferences;
