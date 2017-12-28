@@ -22,12 +22,8 @@ public class MyMvpApp extends Application {
 
         mNetworkingComponent = DaggerNetworkingComponent.builder()
                 .applicationModule(new ApplicationModule(this))
-                .networkingModule(new NetworkingModule("api.openweathermap.org/data/2.5/"))
+                .networkingModule(new NetworkingModule(BuildConfig.JOKES_API_BASE_URL))
                 .build();
-          //      .a
-                //.applicationModule(new ApplicationModule(this))
-                //.networkingModule(new NetworkingModule("api.openweathermap.org/data/2.5/"))
-                //.build();
     }
 
     public NetworkingComponent getNetworkingComponent() {

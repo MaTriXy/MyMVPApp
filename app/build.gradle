@@ -20,6 +20,9 @@ android {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
     buildTypes {
+        debug {
+            buildConfigField('String', 'JOKES_API_BASE_URL', keystoreProperties['JokesBaseUrlhttps'])
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

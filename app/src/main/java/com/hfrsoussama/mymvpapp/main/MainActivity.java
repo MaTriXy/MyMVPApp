@@ -8,10 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.hfrsoussama.mymvpapp.R;
-import com.hfrsoussama.mymvpapp.data.model.Country;
+import com.hfrsoussama.mymvpapp.repository.model.Country;
 import com.hfrsoussama.mymvpapp.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

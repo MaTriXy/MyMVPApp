@@ -1,6 +1,6 @@
 package com.hfrsoussama.mymvpapp.main;
 
-import com.hfrsoussama.mymvpapp.data.model.Country;
+import com.hfrsoussama.mymvpapp.repository.model.Country;
 
 import java.util.List;
 
