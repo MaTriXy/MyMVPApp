@@ -1,4 +1,4 @@
-package com.hfrsoussama.mymvpapp.main;
+package com.hfrsoussama.mymvpapp.features.main;
 
 /**
  * Created by Oussama on 17/12/2017.

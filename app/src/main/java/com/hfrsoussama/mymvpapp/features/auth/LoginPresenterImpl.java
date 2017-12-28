@@ -1,10 +1,17 @@
-package com.hfrsoussama.mymvpapp.auth;
+package com.hfrsoussama.mymvpapp.features.auth;
+
+import android.util.Log;
+
+import com.hfrsoussama.mymvpapp.repository.network.model.Joke;
+
+import java.util.List;
 
 /**
  * Created by Oussama on 16/12/2017.
  */
 
-public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLoginFinishedListener {
+public class LoginPresenterImpl implements LoginPresenter,
+        LoginInteractor.OnLoginFinishedListener, LoginInteractor.OnJokeListFetchListener {
 
     private LoginView mLoginView;
     private LoginInteractor mLoginInteractor;
@@ -21,11 +28,14 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLog
             mLoginView.showProgress();
         }
 
-        mLoginInteractor.login(username, password, this);
+        // mLoginInteractor.login(username, password, this);
+        mLoginInteractor.fetchJokes(this);
+
     }
 
     @Override
     public void onDestroy() {
+        mLoginInteractor.clearDisposables();
         mLoginView = null;
     }
 
@@ -45,5 +55,15 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLog
 
         mLoginView.hideProgress();
         mLoginView.navigateToMain();
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+        throwable.printStackTrace();
+    }
+
+    @Override
+    public void onSuccess(List<Joke> jokeList) {
+        Log.i("MVPAPP", jokeList.toString());
     }
 }

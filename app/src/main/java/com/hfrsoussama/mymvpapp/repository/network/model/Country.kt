@@ -1,4 +1,4 @@
-package com.hfrsoussama.mymvpapp.repository.model
+package com.hfrsoussama.mymvpapp.repository.network.model
 
 /**
  * Created by Oussama on 17/12/2017.

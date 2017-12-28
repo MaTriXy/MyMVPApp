@@ -1,4 +1,4 @@
-package com.hfrsoussama.mymvpapp.splash;
+package com.hfrsoussama.mymvpapp.features.splash;
 
 /**
  * Created by Oussama on 16/12/2017.

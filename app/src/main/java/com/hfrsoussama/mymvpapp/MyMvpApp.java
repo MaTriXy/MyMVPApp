@@ -14,7 +14,7 @@ import com.hfrsoussama.mymvpapp.di.module.NetworkingModule;
 
 public class MyMvpApp extends Application {
 
-    private NetworkingComponent mNetworkingComponent;
+    private static NetworkingComponent mNetworkingComponent;
 
     @Override
     public void onCreate() {
@@ -24,9 +24,10 @@ public class MyMvpApp extends Application {
                 .applicationModule(new ApplicationModule(this))
                 .networkingModule(new NetworkingModule(BuildConfig.JOKES_API_BASE_URL))
                 .build();
+
     }
 
-    public NetworkingComponent getNetworkingComponent() {
+    public static NetworkingComponent getNetworkingComponent() {
         return mNetworkingComponent;
     }
 }

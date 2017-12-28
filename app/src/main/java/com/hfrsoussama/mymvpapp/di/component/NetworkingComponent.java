@@ -1,8 +1,8 @@
 package com.hfrsoussama.mymvpapp.di.component;
 
-import com.hfrsoussama.mymvpapp.auth.LoginInteractor;
 import com.hfrsoussama.mymvpapp.di.module.ApplicationModule;
 import com.hfrsoussama.mymvpapp.di.module.NetworkingModule;
+import com.hfrsoussama.mymvpapp.features.auth.LoginInteractorImpl;
 
 import javax.inject.Singleton;
 
@@ -16,5 +16,5 @@ import dagger.Component;
 @Component(modules = {ApplicationModule.class, NetworkingModule.class})
 public interface NetworkingComponent {
 
-    void inject(LoginInteractor loginInteractor);
+    void inject(LoginInteractorImpl loginInteractor);
 }

@@ -1,11 +1,11 @@
-package com.hfrsoussama.mymvpapp.splash;
+package com.hfrsoussama.mymvpapp.features.splash;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hfrsoussama.mymvpapp.R;
-import com.hfrsoussama.mymvpapp.auth.LoginActivity;
+import com.hfrsoussama.mymvpapp.features.auth.LoginActivity;
 
 import java.util.concurrent.TimeUnit;
 

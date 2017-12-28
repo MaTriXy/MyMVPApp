@@ -9,6 +9,6 @@ import com.google.gson.annotations.SerializedName
 data class ChuckNorrisResponse(
         @SerializedName("type")
         val type: String,
-        @SerializedName("values")
-        val value: List<Joke>
+        @SerializedName("value")
+        val jokeList: List<Joke>
 )

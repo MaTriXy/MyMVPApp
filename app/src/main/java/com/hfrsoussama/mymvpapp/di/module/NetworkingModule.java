@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hfrsoussama.mymvpapp.repository.network.endpoints.WebServiceEndPoints;
+import com.hfrsoussama.mymvpapp.repository.network.helper.ApiHelperImpl;
 
 import javax.inject.Singleton;
 
@@ -15,6 +17,7 @@ import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -63,9 +66,22 @@ public class NetworkingModule {
     @Singleton
     Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(mBaseUrl)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    WebServiceEndPoints provideWebServiceEndPoints(Retrofit retrofit) {
+        return retrofit.create(WebServiceEndPoints.class);
+    }
+
+    @Provides
+    @Singleton
+    ApiHelperImpl provideApiHelperImpl(WebServiceEndPoints webServiceEndPoints) {
+        return new ApiHelperImpl(webServiceEndPoints);
     }
 }

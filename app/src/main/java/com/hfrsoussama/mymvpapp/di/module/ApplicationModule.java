@@ -2,6 +2,7 @@ package com.hfrsoussama.mymvpapp.di.module;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Resources;
 
 import javax.inject.Singleton;
 
@@ -30,5 +31,10 @@ public class ApplicationModule {
     @Provides
     Context providesContext(){
         return mApplication;
+    }
+
+    @Provides
+    Resources providesResources(){
+        return mApplication.getResources();
     }
 }

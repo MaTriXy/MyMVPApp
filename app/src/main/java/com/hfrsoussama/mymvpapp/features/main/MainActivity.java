@@ -1,4 +1,4 @@
-package com.hfrsoussama.mymvpapp.main;
+package com.hfrsoussama.mymvpapp.features.main;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
@@ -8,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.hfrsoussama.mymvpapp.R;
-import com.hfrsoussama.mymvpapp.repository.model.Country;
+import com.hfrsoussama.mymvpapp.repository.network.model.Country;
 import com.hfrsoussama.mymvpapp.databinding.ActivityMainBinding;
 
 import java.util.List;

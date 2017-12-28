@@ -1,6 +1,6 @@
 package com.hfrsoussama.mymvpapp.repository.network.helper;
 
-import com.hfrsoussama.mymvpapp.repository.network.endpoints.JokesWebServiceEndPoints;
+import com.hfrsoussama.mymvpapp.repository.network.endpoints.WebServiceEndPoints;
 import com.hfrsoussama.mymvpapp.repository.network.model.ChuckNorrisResponse;
 
 import io.reactivex.Observable;
@@ -11,14 +11,14 @@ import io.reactivex.Observable;
 
 public class ApiHelperImpl implements ApiHelper {
 
-    JokesWebServiceEndPoints mJokesWebServiceEndPoints;
+    private WebServiceEndPoints mWebServiceEndPoints;
 
-    public ApiHelperImpl(JokesWebServiceEndPoints jokesWebServiceEndPoints) {
-        mJokesWebServiceEndPoints = jokesWebServiceEndPoints;
+    public ApiHelperImpl(WebServiceEndPoints webServiceEndPoints) {
+        mWebServiceEndPoints = webServiceEndPoints;
     }
 
     @Override
     public Observable<ChuckNorrisResponse> getAllChuckNorrisJokes() {
-        return mJokesWebServiceEndPoints.getAllChuckNorrisJokes();
+        return mWebServiceEndPoints.getAllChuckNorrisJokes();
     }
 }

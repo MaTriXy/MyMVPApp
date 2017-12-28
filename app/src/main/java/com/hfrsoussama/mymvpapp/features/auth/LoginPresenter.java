@@ -1,4 +1,4 @@
-package com.hfrsoussama.mymvpapp.auth;
+package com.hfrsoussama.mymvpapp.features.auth;
 
 /**
  * Created by Oussama on 16/12/2017.
