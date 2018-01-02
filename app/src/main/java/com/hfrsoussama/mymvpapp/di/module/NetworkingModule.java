@@ -33,11 +33,6 @@ public class NetworkingModule {
         mBaseUrl = baseUrl;
     }
 
-    @Provides
-    @Singleton
-    SharedPreferences provideSharedPreferences(Application application) {
-        return PreferenceManager.getDefaultSharedPreferences(application);
-    }
 
     @Provides
     @Singleton
