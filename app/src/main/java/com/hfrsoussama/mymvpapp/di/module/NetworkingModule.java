@@ -1,14 +1,11 @@
 package com.hfrsoussama.mymvpapp.di.module;
 
 import android.app.Application;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hfrsoussama.mymvpapp.repository.network.endpoints.WebServiceEndPoints;
-import com.hfrsoussama.mymvpapp.repository.network.helper.ApiHelperImpl;
 
 import javax.inject.Singleton;
 
@@ -74,9 +71,4 @@ public class NetworkingModule {
         return retrofit.create(WebServiceEndPoints.class);
     }
 
-    @Provides
-    @Singleton
-    ApiHelperImpl provideApiHelperImpl(WebServiceEndPoints webServiceEndPoints) {
-        return new ApiHelperImpl(webServiceEndPoints);
-    }
 }

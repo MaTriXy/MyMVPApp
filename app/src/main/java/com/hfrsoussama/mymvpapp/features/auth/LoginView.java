@@ -23,6 +23,6 @@ public interface LoginView {
 
     void hideError();
 
-    void navigateToMain();
+    void navigateToMyJokes();
 
 }

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
  * Created by Oussama on 28/12/2017.
  */
 
-data class ChuckNorrisResponse(
+data class ChuckNorrisJsonResponse(
         @SerializedName("type")
         val type: String,
         @SerializedName("value")
