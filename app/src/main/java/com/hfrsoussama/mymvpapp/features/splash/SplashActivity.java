@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.hfrsoussama.mymvpapp.R;
-import com.hfrsoussama.mymvpapp.features.auth.LoginActivity;
+import com.hfrsoussama.mymvpapp.features.auth.view.LoginActivity;
 
 import java.util.concurrent.TimeUnit;
 

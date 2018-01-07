@@ -16,7 +16,7 @@
             android:name=".features.main.MainActivity"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".features.auth.LoginActivity">
+        <activity android:name=".features.auth.view.LoginActivity">
         </activity>
         <activity android:name=".features.splash.SplashActivity">
             <intent-filter>

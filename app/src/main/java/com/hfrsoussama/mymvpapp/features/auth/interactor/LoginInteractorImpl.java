@@ -1,13 +1,10 @@
-package com.hfrsoussama.mymvpapp.features.auth;
+package com.hfrsoussama.mymvpapp.features.auth.interactor;
 
 import android.text.TextUtils;
 
-import com.hfrsoussama.mymvpapp.MyMvpApp;
-import com.hfrsoussama.mymvpapp.data.network.endpoints.WebServiceEndPoints;
+import com.hfrsoussama.mymvpapp.features.auth.interactor.LoginInteractor;
 
 import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -17,7 +14,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * Created by Oussama on 16/12/2017.
  */
 
-public class LoginInteractorImpl implements LoginInteractor{
+public class LoginInteractorImpl implements LoginInteractor {
 
     private CompositeDisposable mCompositeDisposable;
 

@@ -1,4 +1,8 @@
-package com.hfrsoussama.mymvpapp.features.auth;
+package com.hfrsoussama.mymvpapp.features.auth.presenter;
+
+import com.hfrsoussama.mymvpapp.features.auth.interactor.LoginInteractor;
+import com.hfrsoussama.mymvpapp.features.auth.interactor.LoginInteractorImpl;
+import com.hfrsoussama.mymvpapp.features.auth.view.LoginView;
 
 /**
  * Created by Oussama on 16/12/2017.

@@ -1,4 +1,4 @@
-package com.hfrsoussama.mymvpapp.features.auth;
+package com.hfrsoussama.mymvpapp.features.auth.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.hfrsoussama.mymvpapp.R;
 import com.hfrsoussama.mymvpapp.databinding.ActivityLoginBinding;
+import com.hfrsoussama.mymvpapp.features.auth.presenter.LoginPresenter;
+import com.hfrsoussama.mymvpapp.features.auth.presenter.LoginPresenterImpl;
 import com.hfrsoussama.mymvpapp.features.myjokes.view.MyJokesActivity;
 
 public class LoginActivity extends Activity implements LoginView {
