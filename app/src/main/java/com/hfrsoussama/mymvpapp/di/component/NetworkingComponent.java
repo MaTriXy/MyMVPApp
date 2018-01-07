@@ -17,8 +17,6 @@ import dagger.Component;
 @Component(modules = {ApplicationModule.class, NetworkingModule.class})
 public interface NetworkingComponent {
 
-    void inject(LoginInteractorImpl loginInteractor);
-
     void inject(MyJokesInteractorImpl myJokesInteractor);
 
 }

@@ -3,7 +3,7 @@ package com.hfrsoussama.mymvpapp.features.auth;
 import android.text.TextUtils;
 
 import com.hfrsoussama.mymvpapp.MyMvpApp;
-import com.hfrsoussama.mymvpapp.repository.network.endpoints.WebServiceEndPoints;
+import com.hfrsoussama.mymvpapp.data.network.endpoints.WebServiceEndPoints;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,13 +19,9 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class LoginInteractorImpl implements LoginInteractor{
 
-    @Inject
-    WebServiceEndPoints mWebServiceEndPoints;
-
     private CompositeDisposable mCompositeDisposable;
 
     public LoginInteractorImpl() {
-        MyMvpApp.getNetworkingComponent().inject(this);
         mCompositeDisposable = new CompositeDisposable();
     }
 

@@ -1,12 +1,19 @@
 package com.hfrsoussama.mymvpapp.features.myjokes.interactor;
 
 import com.hfrsoussama.mymvpapp.MyMvpApp;
-import com.hfrsoussama.mymvpapp.repository.network.endpoints.WebServiceEndPoints;
+import com.hfrsoussama.mymvpapp.data.db.model.JokeEntity;
+import com.hfrsoussama.mymvpapp.data.db.repository.JokeRepository;
+import com.hfrsoussama.mymvpapp.data.db.repository.JokeRepositoryImpl;
+import com.hfrsoussama.mymvpapp.data.network.endpoints.WebServiceEndPoints;
+import com.hfrsoussama.mymvpapp.data.network.model.Joke;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.internal.operators.observable.ObservableFromIterable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -18,10 +25,13 @@ public class MyJokesInteractorImpl implements MyJokesInteractor {
     @Inject
     WebServiceEndPoints mWebServiceEndPoints;
 
+    private JokeRepository mJokeRepository;
+
     private CompositeDisposable mCompositeDisposable;
 
     public MyJokesInteractorImpl() {
         MyMvpApp.getNetworkingComponent().inject(this);
+        mJokeRepository = new JokeRepositoryImpl();
         mCompositeDisposable = new CompositeDisposable();
     }
 
@@ -35,6 +45,23 @@ public class MyJokesInteractorImpl implements MyJokesInteractor {
                 .subscribe(
                         jokeList -> listener.onSuccessFetchingJokes(jokeList),
                         throwable -> listener.onErrorFetchingJokes(throwable)
+                )
+        );
+    }
+
+    @Override
+    public void persisteJokes(List<Joke> jokeList, OnPersistListener listener) {
+        mCompositeDisposable.add(ObservableFromIterable.fromIterable(jokeList)
+                .subscribeOn(Schedulers.io())
+                .take(50)
+                .flatMapIterable(jokeEntityList -> jokeList)
+                .map(JokeEntity::fromJoke)
+                .toList()
+                .map(jokeEntities -> mJokeRepository.saveJokesList(jokeEntities))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        booleanObservable -> listener.onSuccessPersisting(),
+                        throwable -> listener.onErrorPersisting(throwable)
                 )
         );
     }

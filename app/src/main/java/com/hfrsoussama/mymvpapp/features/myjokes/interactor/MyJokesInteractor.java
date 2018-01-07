@@ -1,6 +1,6 @@
 package com.hfrsoussama.mymvpapp.features.myjokes.interactor;
 
-import com.hfrsoussama.mymvpapp.repository.network.model.Joke;
+import com.hfrsoussama.mymvpapp.data.network.model.Joke;
 
 import java.util.List;
 
@@ -18,7 +18,18 @@ public interface MyJokesInteractor {
 
     }
 
+    interface OnPersistListener {
+
+        void onSuccessPersisting();
+
+        void onErrorPersisting(Throwable Error);
+
+    }
+
+
     void fetchJokes(OnFetchJokesListener listener);
+
+    void persisteJokes(List<Joke> jokeList, OnPersistListener listener);
 
     void clearDisposables();
 

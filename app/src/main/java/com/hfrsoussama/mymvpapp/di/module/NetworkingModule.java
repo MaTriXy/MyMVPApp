@@ -5,7 +5,7 @@ import android.app.Application;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.hfrsoussama.mymvpapp.repository.network.endpoints.WebServiceEndPoints;
+import com.hfrsoussama.mymvpapp.data.network.endpoints.WebServiceEndPoints;
 
 import javax.inject.Singleton;
 

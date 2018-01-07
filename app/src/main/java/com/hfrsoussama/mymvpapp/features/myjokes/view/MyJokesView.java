@@ -1,6 +1,6 @@
 package com.hfrsoussama.mymvpapp.features.myjokes.view;
 
-import com.hfrsoussama.mymvpapp.repository.network.model.Joke;
+import com.hfrsoussama.mymvpapp.data.network.model.Joke;
 
 import java.util.List;
 

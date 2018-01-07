@@ -2,13 +2,12 @@ package com.hfrsoussama.mymvpapp.features.myjokes.view;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hfrsoussama.mymvpapp.R;
-import com.hfrsoussama.mymvpapp.repository.network.model.Joke;
+import com.hfrsoussama.mymvpapp.data.network.model.Joke;
 
 import java.util.List;
 

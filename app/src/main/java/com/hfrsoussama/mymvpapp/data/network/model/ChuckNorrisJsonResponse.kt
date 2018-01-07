@@ -1,4 +1,4 @@
-package com.hfrsoussama.mymvpapp.repository.network.model
+package com.hfrsoussama.mymvpapp.data.network.model
 
 import com.google.gson.annotations.SerializedName
 

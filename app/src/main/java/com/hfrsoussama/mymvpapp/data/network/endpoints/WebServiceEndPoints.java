@@ -1,7 +1,7 @@
-package com.hfrsoussama.mymvpapp.repository.network.endpoints;
+package com.hfrsoussama.mymvpapp.data.network.endpoints;
 
 import com.hfrsoussama.mymvpapp.BuildConfig;
-import com.hfrsoussama.mymvpapp.repository.network.model.ChuckNorrisJsonResponse;
+import com.hfrsoussama.mymvpapp.data.network.model.ChuckNorrisJsonResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

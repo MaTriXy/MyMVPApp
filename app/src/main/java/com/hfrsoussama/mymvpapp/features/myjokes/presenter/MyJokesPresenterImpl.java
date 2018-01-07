@@ -1,9 +1,11 @@
 package com.hfrsoussama.mymvpapp.features.myjokes.presenter;
 
+import android.util.Log;
+
 import com.hfrsoussama.mymvpapp.features.myjokes.interactor.MyJokesInteractor;
 import com.hfrsoussama.mymvpapp.features.myjokes.interactor.MyJokesInteractorImpl;
 import com.hfrsoussama.mymvpapp.features.myjokes.view.MyJokesView;
-import com.hfrsoussama.mymvpapp.repository.network.model.Joke;
+import com.hfrsoussama.mymvpapp.data.network.model.Joke;
 
 import java.util.List;
 
@@ -11,7 +13,8 @@ import java.util.List;
  * Created by Oussama on 02/01/2018.
  */
 
-public class MyJokesPresenterImpl implements MyJokesPresenter, MyJokesInteractor.OnFetchJokesListener{
+public class MyJokesPresenterImpl implements MyJokesPresenter,
+        MyJokesInteractor.OnFetchJokesListener, MyJokesInteractor.OnPersistListener{
 
     private MyJokesView mMyJokesView;
     private MyJokesInteractor mMyJokesInteractor;
@@ -41,6 +44,8 @@ public class MyJokesPresenterImpl implements MyJokesPresenter, MyJokesInteractor
         mMyJokesView.hideLoading();
         mMyJokesView.showJokes(jokeList);
 
+        mMyJokesInteractor.persisteJokes(jokeList, this);
+
     }
 
     @Override
@@ -49,6 +54,17 @@ public class MyJokesPresenterImpl implements MyJokesPresenter, MyJokesInteractor
             return;
         mMyJokesView.hideLoading();
         mMyJokesView.showError();
+
+    }
+
+    @Override
+    public void onSuccessPersisting() {
+        Log.e("TAG", "YOHOOO");
+    }
+
+    @Override
+    public void onErrorPersisting(Throwable Error) {
+        Log.e("TAG", "EROROOOOOr");
 
     }
 }

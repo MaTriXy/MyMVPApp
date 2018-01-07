@@ -1,16 +1,16 @@
 package com.hfrsoussama.mymvpapp.features.auth;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hfrsoussama.mymvpapp.R;
 import com.hfrsoussama.mymvpapp.databinding.ActivityLoginBinding;
 import com.hfrsoussama.mymvpapp.features.myjokes.view.MyJokesActivity;
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
+public class LoginActivity extends Activity implements LoginView {
 
     private ActivityLoginBinding mLoginBinding;
     private LoginPresenter mLoginPresenter;
@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        mLoginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
         mLoginPresenter = new LoginPresenterImpl(this);
     }
 
