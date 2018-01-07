@@ -5,7 +5,7 @@ import android.app.Application;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.hfrsoussama.mymvpapp.data.network.endpoints.WebServiceEndPoints;
+import com.hfrsoussama.mymvpapp.data.network.repository.WebServiceRepository;
 
 import javax.inject.Singleton;
 
@@ -67,8 +67,8 @@ public class NetworkingModule {
 
     @Provides
     @Singleton
-    WebServiceEndPoints provideWebServiceEndPoints(Retrofit retrofit) {
-        return retrofit.create(WebServiceEndPoints.class);
+    WebServiceRepository provideWebServiceEndPoints(Retrofit retrofit) {
+        return retrofit.create(WebServiceRepository.class);
     }
 
 }

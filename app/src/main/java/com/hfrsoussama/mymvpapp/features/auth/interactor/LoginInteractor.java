@@ -14,7 +14,7 @@ public interface LoginInteractor {
 
     }
 
-    void login(String username, String password, OnLoginFinishedListener listener);
+    void login(String username, String password, OnLoginFinishedListener onLoginFinishedListener);
 
     void clearDisposables();
 }

@@ -39,7 +39,7 @@ public class LoginPresenterImpl implements LoginPresenter,
     @Override
     public void onError() {
         if (mLoginView == null)
-            return;
+             return;
 
         mLoginView.hideProgress();
         mLoginView.showError();

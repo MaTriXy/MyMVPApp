@@ -4,7 +4,7 @@ import com.hfrsoussama.mymvpapp.MyMvpApp;
 import com.hfrsoussama.mymvpapp.data.db.model.JokeEntity;
 import com.hfrsoussama.mymvpapp.data.db.repository.JokeRepository;
 import com.hfrsoussama.mymvpapp.data.db.repository.JokeRepositoryImpl;
-import com.hfrsoussama.mymvpapp.data.network.endpoints.WebServiceEndPoints;
+import com.hfrsoussama.mymvpapp.data.network.repository.WebServiceRepository;
 import com.hfrsoussama.mymvpapp.data.network.model.Joke;
 
 import java.util.List;
@@ -23,9 +23,9 @@ import io.reactivex.schedulers.Schedulers;
 public class MyJokesInteractorImpl implements MyJokesInteractor {
 
     @Inject
-    WebServiceEndPoints mWebServiceEndPoints;
+    WebServiceRepository mWebServiceRepository;
 
-    private JokeRepository mJokeRepository;
+    JokeRepository mJokeRepository;
 
     private CompositeDisposable mCompositeDisposable;
 
@@ -38,7 +38,7 @@ public class MyJokesInteractorImpl implements MyJokesInteractor {
 
     @Override
     public void fetchJokes(OnFetchJokesListener listener) {
-        mCompositeDisposable.add(mWebServiceEndPoints.getAllChuckNorrisJokes()
+        mCompositeDisposable.add(mWebServiceRepository.getAllChuckNorrisJokes()
                 .subscribeOn(Schedulers.io())
                 .map(chuckNorrisJsonResponse -> chuckNorrisJsonResponse.getJokeList())
                 .observeOn(AndroidSchedulers.mainThread())
