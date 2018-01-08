@@ -17,9 +17,9 @@ import com.hfrsoussama.mymvpapp.di.module.NetworkingModule;
 
 public class MyMvpApp extends Application {
 
-    private static NetworkingComponent sNetworkingComponent;
+    private static NetworkingComponent networkingComponent;
 
-    private static DaoSession mDaoSession;
+    private static DaoSession daoSession;
 
 
     @Override
@@ -28,23 +28,23 @@ public class MyMvpApp extends Application {
 
         ApplicationModule applicationModule = new ApplicationModule(this);
 
-        sNetworkingComponent = DaggerNetworkingComponent.builder()
+        networkingComponent = DaggerNetworkingComponent.builder()
                 .applicationModule(applicationModule)
                 .networkingModule(new NetworkingModule(BuildConfig.JOKES_API_BASE_URL))
                 .build();
 
-        mDaoSession = new DaoMaster(
-                new DbOpenHelper(this, "greendao_demo.db").getWritableDb()
+        daoSession = new DaoMaster(
+                new DbOpenHelper(this, "jokes.db").getWritableDb()
         ).newSession();
 
 
     }
 
     public static NetworkingComponent getNetworkingComponent() {
-        return sNetworkingComponent;
+        return networkingComponent;
     }
 
     public static DaoSession getDaoSession() {
-        return mDaoSession;
+        return daoSession;
     }
 }

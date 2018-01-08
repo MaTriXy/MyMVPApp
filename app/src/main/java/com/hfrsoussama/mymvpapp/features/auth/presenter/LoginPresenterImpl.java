@@ -11,46 +11,46 @@ import com.hfrsoussama.mymvpapp.features.auth.view.LoginView;
 public class LoginPresenterImpl implements LoginPresenter,
         LoginInteractor.OnLoginFinishedListener {
 
-    private LoginView mLoginView;
-    private LoginInteractor mLoginInteractor;
+    private LoginView loginView;
+    private LoginInteractor loginInteractor;
 
     public LoginPresenterImpl(LoginView loginView) {
-        mLoginView = loginView;
-        mLoginInteractor = new LoginInteractorImpl();
+        this.loginView = loginView;
+        loginInteractor = new LoginInteractorImpl();
     }
 
     @Override
     public void validateCredantials(String username, String password) {
-        if (mLoginView != null) {
-            mLoginView.hideError();
-            mLoginView.showProgress();
+        if (loginView != null) {
+            loginView.hideError();
+            loginView.showProgress();
         }
 
-        mLoginInteractor.login(username, password, this);
+        loginInteractor.login(username, password, this);
 
     }
 
     @Override
     public void onDestroy() {
-        mLoginInteractor.clearDisposables();
-        mLoginView = null;
+        loginInteractor.clearDisposables();
+        loginView = null;
     }
 
     @Override
     public void onError() {
-        if (mLoginView == null)
+        if (loginView == null)
              return;
 
-        mLoginView.hideProgress();
-        mLoginView.showError();
+        loginView.hideProgress();
+        loginView.showError();
     }
 
     @Override
     public void onSuccess() {
-        if (mLoginView == null)
+        if (loginView == null)
             return;
 
-        mLoginView.hideProgress();
-        mLoginView.navigateToMyJokes();
+        loginView.hideProgress();
+        loginView.navigateToMyJokes();
     }
 }

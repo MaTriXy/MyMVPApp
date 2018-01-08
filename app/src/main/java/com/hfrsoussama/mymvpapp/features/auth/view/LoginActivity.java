@@ -14,43 +14,43 @@ import com.hfrsoussama.mymvpapp.features.myjokes.view.MyJokesActivity;
 
 public class LoginActivity extends Activity implements LoginView {
 
-    private ActivityLoginBinding mLoginBinding;
-    private LoginPresenter mLoginPresenter;
+    private ActivityLoginBinding loginBinding;
+    private LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mLoginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
-        mLoginPresenter = new LoginPresenterImpl(this);
+        loginBinding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
+        loginPresenter = new LoginPresenterImpl(this);
     }
 
     @Override
     public void onClickLogin(View v) {
-        mLoginPresenter.validateCredantials(
-                mLoginBinding.tiUsernameLoginActivity.getText().toString(),
-                mLoginBinding.tiPasswordLoginActivity.getText().toString()
+        loginPresenter.validateCredantials(
+                loginBinding.tiUsernameLoginActivity.getText().toString(),
+                loginBinding.tiPasswordLoginActivity.getText().toString()
         );
     }
 
     @Override
     public void showProgress() {
-        mLoginBinding.pbVerificationLogin.setVisibility(View.VISIBLE);
+        loginBinding.pbVerificationLogin.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-        mLoginBinding.pbVerificationLogin.setVisibility(View.INVISIBLE);
+        loginBinding.pbVerificationLogin.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showError() {
-        mLoginBinding.tvErrorLogin.setVisibility(View.VISIBLE);
+        loginBinding.tvErrorLogin.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideError() {
-        mLoginBinding.tvErrorLogin.setVisibility(View.INVISIBLE);
+        loginBinding.tvErrorLogin.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class LoginActivity extends Activity implements LoginView {
 
     @Override
     protected void onDestroy() {
-        mLoginPresenter.onDestroy();
+        loginPresenter.onDestroy();
         super.onDestroy();
     }
 }

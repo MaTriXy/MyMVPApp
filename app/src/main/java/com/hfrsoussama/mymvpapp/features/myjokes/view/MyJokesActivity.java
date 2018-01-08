@@ -17,15 +17,15 @@ import java.util.List;
 
 public class MyJokesActivity extends AppCompatActivity implements MyJokesView {
 
-    private ActivityMyJokesBinding mBinding;
-    private MyJokesPresenter mJokesPresenter;
+    private ActivityMyJokesBinding binding;
+    private MyJokesPresenter jokesPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_my_jokes);
-        mJokesPresenter = new MyJokesPresenterImpl(this);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_my_jokes);
+        jokesPresenter = new MyJokesPresenterImpl(this);
 
         init();
 
@@ -33,13 +33,13 @@ public class MyJokesActivity extends AppCompatActivity implements MyJokesView {
 
     @Override
     protected void onDestroy() {
-        mJokesPresenter.onDestroy();
+        jokesPresenter.onDestroy();
         super.onDestroy();
     }
 
     @Override
     public void init() {
-        mBinding.rvJokesList.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvJokesList.setLayoutManager(new LinearLayoutManager(this));
         fetchJokes();
     }
 
@@ -47,30 +47,30 @@ public class MyJokesActivity extends AppCompatActivity implements MyJokesView {
     public void fetchJokes() {
         hideJokes();
         showLoading();
-        mJokesPresenter.fetchJokes();
+        jokesPresenter.fetchJokes();
     }
 
     @Override
     public void showJokes(List<Joke> jokeList) {
-        mBinding.rvJokesList.setVisibility(View.VISIBLE);
-        mBinding.rvJokesList.setAdapter(new JokesListAdapter(jokeList));
+        binding.rvJokesList.setVisibility(View.VISIBLE);
+        binding.rvJokesList.setAdapter(new JokesListAdapter(jokeList));
         hideLoading();
     }
 
 
     @Override
     public void hideJokes() {
-        mBinding.rvJokesList.setVisibility(View.INVISIBLE);
+        binding.rvJokesList.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showLoading() {
-        mBinding.pbLoadingJokesList.setVisibility(View.VISIBLE);
+        binding.pbLoadingJokesList.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
-        mBinding.pbLoadingJokesList.setVisibility(View.INVISIBLE);
+        binding.pbLoadingJokesList.setVisibility(View.INVISIBLE);
     }
 
     @Override

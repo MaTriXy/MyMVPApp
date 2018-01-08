@@ -14,46 +14,47 @@ import java.util.List;
  */
 
 public class MyJokesPresenterImpl implements MyJokesPresenter,
-        MyJokesInteractor.OnFetchJokesListener, MyJokesInteractor.OnPersistListener{
+        MyJokesInteractor.OnFetchJokesListener,
+        MyJokesInteractor.OnPersistListener{
 
-    private MyJokesView mMyJokesView;
-    private MyJokesInteractor mMyJokesInteractor;
+    private MyJokesView myJokesView;
+    private MyJokesInteractor myJokesInteractor;
 
 
     public MyJokesPresenterImpl(MyJokesView myJokesView) {
-        mMyJokesView = myJokesView;
-        mMyJokesInteractor = new MyJokesInteractorImpl();
+        this.myJokesView = myJokesView;
+        myJokesInteractor = new MyJokesInteractorImpl();
     }
 
 
     @Override
     public void fetchJokes() {
-        mMyJokesInteractor.fetchJokes(this);
+        myJokesInteractor.fetchJokes(this);
     }
 
     @Override
     public void onDestroy() {
-        mMyJokesView = null;
+        myJokesView = null;
     }
 
     @Override
     public void onSuccessFetchingJokes(List<Joke> jokeList) {
-        if (mMyJokesView == null)
+        if (myJokesView == null)
             return;
 
-        mMyJokesView.hideLoading();
-        mMyJokesView.showJokes(jokeList);
+        myJokesView.hideLoading();
+        myJokesView.showJokes(jokeList);
 
-        mMyJokesInteractor.persisteJokes(jokeList, this);
+        myJokesInteractor.persisteJokes(jokeList, this);
 
     }
 
     @Override
     public void onErrorFetchingJokes(Throwable Error) {
-        if (mMyJokesView == null)
+        if (myJokesView == null)
             return;
-        mMyJokesView.hideLoading();
-        mMyJokesView.showError();
+        myJokesView.hideLoading();
+        myJokesView.showError();
 
     }
 

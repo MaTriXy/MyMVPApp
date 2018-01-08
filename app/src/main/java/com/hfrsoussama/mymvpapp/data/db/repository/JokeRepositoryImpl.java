@@ -17,7 +17,7 @@ import io.reactivex.Observable;
 public class JokeRepositoryImpl implements JokeRepository{
 
     @Inject
-    DaoSession mDaoSession;
+    DaoSession daoSession;
 
     public JokeRepositoryImpl() {
     }
