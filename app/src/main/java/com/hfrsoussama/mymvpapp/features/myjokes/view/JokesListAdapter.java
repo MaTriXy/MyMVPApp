@@ -17,10 +17,10 @@ import java.util.List;
 
 public class JokesListAdapter extends RecyclerView.Adapter<JokesListAdapter.JokeItemViewHolder> {
 
-    private List<Joke> mJokeList;
+    private List<Joke> jokeList;
 
     public JokesListAdapter(List<Joke> jokeList) {
-        mJokeList = jokeList;
+        this.jokeList = jokeList;
     }
 
     @Override
@@ -32,12 +32,12 @@ public class JokesListAdapter extends RecyclerView.Adapter<JokesListAdapter.Joke
 
     @Override
     public void onBindViewHolder(JokeItemViewHolder holder, int position) {
-        holder.bindJoke(mJokeList.get(position), position);
+        holder.bindJoke(jokeList.get(position), position);
     }
 
     @Override
     public int getItemCount() {
-        return mJokeList.size();
+        return jokeList.size();
     }
 
 

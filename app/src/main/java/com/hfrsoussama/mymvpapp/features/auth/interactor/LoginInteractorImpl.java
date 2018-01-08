@@ -2,8 +2,6 @@ package com.hfrsoussama.mymvpapp.features.auth.interactor;
 
 import android.text.TextUtils;
 
-import com.hfrsoussama.mymvpapp.features.auth.interactor.LoginInteractor;
-
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
@@ -16,10 +14,10 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class LoginInteractorImpl implements LoginInteractor {
 
-    private CompositeDisposable mCompositeDisposable;
+    private CompositeDisposable compositeDisposable;
 
     public LoginInteractorImpl() {
-        mCompositeDisposable = new CompositeDisposable();
+        compositeDisposable = new CompositeDisposable();
     }
 
     @Override
@@ -38,8 +36,8 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     @Override
     public void clearDisposables() {
-        if (mCompositeDisposable != null)
-            mCompositeDisposable.clear();
+        if (compositeDisposable != null)
+            compositeDisposable.clear();
     }
 
 

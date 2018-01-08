@@ -23,22 +23,22 @@ import io.reactivex.schedulers.Schedulers;
 public class MyJokesInteractorImpl implements MyJokesInteractor {
 
     @Inject
-    WebServiceRepository mWebServiceRepository;
+    WebServiceRepository webServiceRepository;
 
-    JokeRepository mJokeRepository;
+    JokeRepository jokeRepository;
 
     private CompositeDisposable mCompositeDisposable;
 
     public MyJokesInteractorImpl() {
         MyMvpApp.getNetworkingComponent().inject(this);
-        mJokeRepository = new JokeRepositoryImpl();
+        jokeRepository = new JokeRepositoryImpl();
         mCompositeDisposable = new CompositeDisposable();
     }
 
 
     @Override
     public void fetchJokes(OnFetchJokesListener listener) {
-        mCompositeDisposable.add(mWebServiceRepository.getAllChuckNorrisJokes()
+        mCompositeDisposable.add(webServiceRepository.getAllChuckNorrisJokes()
                 .subscribeOn(Schedulers.io())
                 .map(chuckNorrisJsonResponse -> chuckNorrisJsonResponse.getJokeList())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -57,7 +57,7 @@ public class MyJokesInteractorImpl implements MyJokesInteractor {
                 .flatMapIterable(jokeEntityList -> jokeList)
                 .map(JokeEntity::fromJoke)
                 .toList()
-                .map(jokeEntities -> mJokeRepository.saveJokesList(jokeEntities))
+                .map(jokeEntities -> jokeRepository.saveJokesList(jokeEntities))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         booleanObservable -> listener.onSuccessPersisting(),
