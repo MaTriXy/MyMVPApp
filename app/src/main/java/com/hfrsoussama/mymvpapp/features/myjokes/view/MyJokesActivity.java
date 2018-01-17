@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.hfrsoussama.mymvpapp.R;
 import com.hfrsoussama.mymvpapp.databinding.ActivityMyJokesBinding;
@@ -74,8 +75,8 @@ public class MyJokesActivity extends AppCompatActivity implements MyJokesView {
     }
 
     @Override
-    public void showError() {
-        Log.d(MyJokesActivity.class.getName(), "ERROR");
+    public void showError(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
 

@@ -22,6 +22,6 @@ public interface MyJokesView {
 
      void hideLoading();
 
-     void showError();
+     void showError(String errorMessage);
 
 }

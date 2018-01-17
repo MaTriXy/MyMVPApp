@@ -1,6 +1,7 @@
 package com.hfrsoussama.mymvpapp.features.myjokes.presenter;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.hfrsoussama.mymvpapp.features.myjokes.interactor.MyJokesInteractor;
 import com.hfrsoussama.mymvpapp.features.myjokes.interactor.MyJokesInteractorImpl;
@@ -54,18 +55,20 @@ public class MyJokesPresenterImpl implements MyJokesPresenter,
         if (myJokesView == null)
             return;
         myJokesView.hideLoading();
-        myJokesView.showError();
+        myJokesView.showError("Error fetching Jokes");
 
     }
 
     @Override
     public void onSuccessPersisting() {
-        Log.e("TAG", "YOHOOO");
+        Log.e("TAG", "Done persisting in data in background !");
     }
 
     @Override
     public void onErrorPersisting(Throwable Error) {
-        Log.e("TAG", "EROROOOOOr");
+        if (myJokesView == null)
+            return;
+        myJokesView.showError("Error persisting Jokes");
 
     }
 }
