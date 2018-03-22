@@ -1,12 +1,11 @@
 package com.hfrsoussama.mymvpapp.features.myjokes.presenter;
 
 import android.util.Log;
-import android.widget.Toast;
 
+import com.hfrsoussama.mymvpapp.data.network.model.Joke;
 import com.hfrsoussama.mymvpapp.features.myjokes.interactor.MyJokesInteractor;
 import com.hfrsoussama.mymvpapp.features.myjokes.interactor.MyJokesInteractorImpl;
 import com.hfrsoussama.mymvpapp.features.myjokes.view.MyJokesView;
-import com.hfrsoussama.mymvpapp.data.network.model.Joke;
 
 import java.util.List;
 
@@ -36,6 +35,7 @@ public class MyJokesPresenterImpl implements MyJokesPresenter,
     @Override
     public void onDestroy() {
         myJokesView = null;
+        myJokesInteractor.clearDisposables();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class MyJokesPresenterImpl implements MyJokesPresenter,
         myJokesView.hideLoading();
         myJokesView.showJokes(jokeList);
 
-        myJokesInteractor.persisteJokes(jokeList, this);
+        myJokesInteractor.persistJokes(jokeList, this);
 
     }
 

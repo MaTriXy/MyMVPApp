@@ -4,6 +4,7 @@ import com.hfrsoussama.mymvpapp.MyMvpApp;
 import com.hfrsoussama.mymvpapp.data.db.model.JokeEntity;
 import com.hfrsoussama.mymvpapp.data.db.repository.JokeRepository;
 import com.hfrsoussama.mymvpapp.data.db.repository.JokeRepositoryImpl;
+import com.hfrsoussama.mymvpapp.data.network.model.ChuckNorrisJsonResponse;
 import com.hfrsoussama.mymvpapp.data.network.repository.WebServiceRepository;
 import com.hfrsoussama.mymvpapp.data.network.model.Joke;
 
@@ -25,7 +26,7 @@ public class MyJokesInteractorImpl implements MyJokesInteractor {
     @Inject
     WebServiceRepository webServiceRepository;
 
-    JokeRepository jokeRepository;
+    private JokeRepository jokeRepository;
 
     private CompositeDisposable mCompositeDisposable;
 
@@ -40,17 +41,17 @@ public class MyJokesInteractorImpl implements MyJokesInteractor {
     public void fetchJokes(OnFetchJokesListener listener) {
         mCompositeDisposable.add(webServiceRepository.getAllChuckNorrisJokes()
                 .subscribeOn(Schedulers.io())
-                .map(chuckNorrisJsonResponse -> chuckNorrisJsonResponse.getJokeList())
+                .map(ChuckNorrisJsonResponse::getJokeList)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        jokeList -> listener.onSuccessFetchingJokes(jokeList),
-                        throwable -> listener.onErrorFetchingJokes(throwable)
+                        listener::onSuccessFetchingJokes,
+                        listener::onErrorFetchingJokes
                 )
         );
     }
 
     @Override
-    public void persisteJokes(List<Joke> jokeList, OnPersistListener listener) {
+    public void persistJokes(List<Joke> jokeList, OnPersistListener listener) {
         mCompositeDisposable.add(ObservableFromIterable.fromIterable(jokeList)
                 .subscribeOn(Schedulers.io())
                 .take(50)
@@ -61,7 +62,7 @@ public class MyJokesInteractorImpl implements MyJokesInteractor {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         booleanObservable -> listener.onSuccessPersisting(),
-                        throwable -> listener.onErrorPersisting(throwable)
+                        listener::onErrorPersisting
                 )
         );
     }

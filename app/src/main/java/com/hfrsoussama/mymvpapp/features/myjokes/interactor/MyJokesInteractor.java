@@ -29,7 +29,7 @@ public interface MyJokesInteractor {
 
     void fetchJokes(OnFetchJokesListener listener);
 
-    void persisteJokes(List<Joke> jokeList, OnPersistListener listener);
+    void persistJokes(List<Joke> jokeList, OnPersistListener listener);
 
     void clearDisposables();
 
